@@ -1,10 +1,12 @@
 # showunittests README
 
-This is my first extension. It's simple and only open alle files in my COBOL unit test directory :-)
+This is my first extension. It's simple and only open alle files in my COBOL unit test directory, make a COBOL compile available and do a COBOL unit test :-)
 
 ## Features
 
 Every file/COBOL unit test will be open in a seperate tab.
+Compile requires GnuCOBOL compiler
+Unit tests requires GnuCOBOL compiler and Neopragmas COBOL unit test.
 
 ## Requirements
 
@@ -28,7 +30,7 @@ My very first release
 
 ### 0.0.2
 
-Not yet released.
+Just released and includes COBOL Compile and unit test.
 
 ### 1.0.0
 
