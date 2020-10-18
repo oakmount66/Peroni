@@ -1,0 +1,12 @@
+{
+        "PROJECT": "/home/oakmount/Dropbox/COBOL/cobol-unit-test",
+        "MAINSRC": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/main/cobol",
+        "TESTSRC": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/test/cobol",
+        "MAINCPY": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/main/cobol/copy",
+        "TESTCPY": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/test/cobol/unit-tests",
+        "TARGET": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/target",
+        "MAINRSC": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/main/resources",
+        "TESTRSC": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/test/resources",
+        "COBCPY": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/main/cobol/copy:/home/oakmount/Dropbox/COBOL/cobol-unit-test/src/test/cobol/unit-tests",
+        "COB_LIBRARY_PATH": "/home/oakmount/Dropbox/COBOL/cobol-unit-test/target"
+}
