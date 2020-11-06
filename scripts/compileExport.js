@@ -1,49 +1,65 @@
+const vscode = require('vscode');
 const execSync = require('child_process').execSync;
-const globals = require('./globals');
+const globals = require('./globals.json');
 const fs = require('fs');
+const { exec } = require('child_process');
+const { spawn } = require('child_process');
+const { stdout } = require('process');
 exports.compileCobolProgram = compileCobolProgram;
 
 function execCommand(command) {
-    execSync(command, (error, stdout, stderr) => {
-        if (error) {
-            console.log(`${command} error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.log(`${command} stderr: ${stderr}`);
-            return;
-        }
-        if (stdout) {
-            console.log(`${stdout}`);
-            return;
-        }
-    });
+    execSync(command);
 }
 
-function compileCobolProgram(programName = '', SUBPROGRAM = false, TEST = false, CLEAN = false) {
-    var PATH = globals.PROJECT + ":" + globals.TARGET + ":" + globals.PATH;
+function compileCobolProgram(programName = '', subprogram = false, test = false, clean = false) {
+    var path = globals.project + ":" + globals.target + ":" + globals.path;
 
-    if (fs.existsSync(globals.TARGET) == false)
-    fs.mkdirSync(globals.TARGET);
+    vscode.window.showInformationMessage('Ciao a compileCobolProgram #1');
 
-    if (TEST)              
-        var SOURCE = globals.TESTSRC
+    if ( programName != '') {
+        var programNameSpliced = programName.split('/')
+        programName = programNameSpliced[-1];
+        if (programName[-4].toUpperCase() == '.CBL') {
+            programName = programName.slice(0,-4)
+        }
+    }
+
+    vscode.window.showInformationMessage('programName : ' + programName);
+
+    if (fs.existsSync(globals.target) == false)
+    fs.mkdirSync(globals.target);
+
+    vscode.window.showInformationMessage('Ciao a compileCobolProgram #2');
+    if (test)              
+        var source = globals.testsrc
     else
-        var SOURCE = globals.MAINSRC           
+        var source = globals.mainsrc           
 
-    if (SUBPROGRAM) {      
-        var SUFFIX = '.so'
-        var COBOPTS = '-m'
+    vscode.window.showInformationMessage('Ciao a compileCobolProgram #3');
+    if (subprogram) {      
+        var suffix = '.so'
+        var cobopts = '-m'
     }
     else {                         
-        var SUFFIX = ''
-        var COBOPTS = '-x'
+        var suffix = ''
+        var cobopts = '-x'
     }
 
-    if (CLEAN && fs.existsSync(globals.TARGET+ "/" + programName + SUFFIX))
-        fs.unlinkSync(globals.TARGET + "/" + programName + SUFFIX);
-    console.log('Compile started')
-    var command = "cobc " + COBOPTS + " -std=ibm " + SOURCE + "/" + programName + ".CBL -o "+ globals.TARGET + "/" + programName + SUFFIX
-    execCommand(command);
-    console.log('Compile ended')
+    vscode.window.showInformationMessage('Ciao a compileCobolProgram #4');
+    if (clean && fs.existsSync(globals.target+ "/" + programName + suffix))
+        fs.unlinkSync(globals.target + "/" + programName + suffix);
+        
+    vscode.window.showInformationMessage('Ciao a compileCobolProgram #5');
+    var command = "cobc " + cobopts + " -std=ibm " + programName + " -o "+ globals.target + "/" + programName + suffix
+    vscode.window.showInformationMessage('Ciao a compileCobolProgram #6');
+    vscode.window.showInformationMessage('command: ' + command);
+    
+    //const result = execSync(command,{stdio: 'inherit'});
+    const child = spawn(command, {
+        stdio: 'inherit',
+        shell: true,
+        cwd: './'
+      });
+
+    vscode.window.showInformationMessage('Ciao a compileCobolProgram #7');
 }

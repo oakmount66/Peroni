@@ -1,6 +1,7 @@
 # showunittests README
 
 This is my first extension. It's simple and only open alle files in my COBOL unit test directory, make a COBOL compile available and do a COBOL unit test :-)
+Peroni è il nome un biera italiano, come bevo in Varenna sul Lago di Como insieme mio figlo William. Vedi la pictura (ikon)
 
 ## Features
 

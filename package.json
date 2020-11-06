@@ -1,10 +1,10 @@
 {
-	"name": "Peroni",
+	"name": "peroni",
 	"publisher": "Oakmount",
 	"repository": {"url": "https://github.com/oakmount66/Peroni"},
 	"displayName": "Peroni",
 	"description": "Open all COBOL unit test for a given COBOL program, Compile it and run a COBOL unit test",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"icon": "images/Peroni.png",
 	"engines": {
 		"vscode": "^1.50.0"
@@ -15,34 +15,37 @@
 	"activationEvents": [
 		"*"
 	],
-	"main": "./extension.js",
+	"main": "./scripts/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "Peroni.showUnitTests",
+				"command": "peroni.showUnitTests",
 				"title": "Show COBOL Unit Tests"
 			},
 			{
-				"command": "showunittest.compileCOBOL",
-				"title": "Run COBOL Unit Tests"
+				"command": "peroni.compileCOBOL",
+				"title": "Run COBOL compile"
 			},
 			{
-				"command": "showunittest.runUnitTests",
+				"command": "peroni.runUnitTests",
 				"title": "Run COBOL Unit Tests"
 			}
 		],
 		"keybindings": [
 			{
 				"key": "ctrl+1 ctrl+1",
-				"command": "Peroni.showUnitTests"
+				"command": "peroni.showUnitTests",
+				"when": "editorTextFocus && editorLangId == cobol"
 			},
 			{
 				"key": "ctrl+2 ctrl+2",
-				"command": "Peroni.compileCOBOL"
+				"command": "peroni.compileCOBOL",
+				"when": "editorTextFocus && editorLangId == cobol"
 			},
 			{
 				"key": "ctrl+3 ctrl+3",
-				"command": "Peroni.runUnitTests"
+				"command": "peroni.runUnitTests",
+				"when": "editorTextFocus && editorLangId == cobol"
 			}
 		]
 	},
