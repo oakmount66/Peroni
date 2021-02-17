@@ -29,6 +29,10 @@
 			{
 				"command": "peroni.runUnitTests",
 				"title": "Run COBOL Unit Tests"
+			},
+			{
+				"command": "peroni.expandCobol",
+				"title": "Expand COBOL program"
 			}
 		],
 		"keybindings": [
@@ -45,6 +49,11 @@
 			{
 				"key": "ctrl+3 ctrl+3",
 				"command": "peroni.runUnitTests",
+				"when": "editorTextFocus && editorLangId == cobol"
+			},
+			{
+				"key": "ctrl+4 ctrl+4",
+				"command": "peroni.expandCobol",
 				"when": "editorTextFocus && editorLangId == cobol"
 			}
 		]
